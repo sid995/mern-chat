@@ -1,0 +1,12 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "Chat application using MERN architecture",
+  "main": "index.js",
+  "repository": "https://github.com/sid995/mern-chat.git",
+  "author": "Siddharth Kundu",
+  "license": "MIT",
+  "dependencies": {
+    "graphql": "^14.0.2"
+  }
+}
