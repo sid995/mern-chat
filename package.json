@@ -6,12 +6,14 @@
   "repository": "https://github.com/sid995/mern-chat.git",
   "author": "Siddharth Kundu",
   "license": "MIT",
+  "scripts": {
+    "watch": "nodemon index.js"
+  },
   "dependencies": {
-    "express": "^4.16.4",
-    "express-graphql": "^0.7.1",
+    "apollo-server": "^2.2.0",
     "graphql": "^14.0.2"
   },
   "devDependencies": {
-    "supervisor": "^0.12.0"
+    "nodemon": "^1.18.6"
   }
 }
