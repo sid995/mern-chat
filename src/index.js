@@ -1,24 +1,41 @@
 import { ApolloServer } from 'apollo-server-express'
+import mongoose from 'mongoose'
 import express from 'express'
 import typeDefs from './typeDefs'
 import resolvers from './resolvers'
+import {
+  APP_PORT,
+  IN_PROD,
+  DB_USERNAME,
+  DB_PASSWORD,
+  DB_HOST,
+  DB_PORT,
+  DB_NAME
+} from './config'
+;(async () => {
+  try {
+    await mongoose.connect(
+      // 'mongodb://test:test123@ds055990.mlab.com:55990/local-chat',
+      `mongodb://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+      { useNewUrlParser: true }
+    )
 
-const { APP_PORT = 4000, NODE_ENV = 'development' } = process.env
+    const app = express()
 
-const IN_PROD = NODE_ENV === 'production'
+    app.disable('x-powered-by')
 
-const app = express()
+    const server = new ApolloServer({
+      typeDefs,
+      resolvers,
+      playground: IN_PROD
+    })
 
-app.disable('x-powered-by')
+    server.applyMiddleware({ app })
 
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  playground: IN_PROD
-})
-
-server.applyMiddleware({ app })
-
-app.listen({ port: APP_PORT }, () =>
-  console.log(`http://localhost:${APP_PORT}${server.graphqlPath}`)
-)
+    app.listen({ port: APP_PORT }, () =>
+      console.log(`http://localhost:${APP_PORT}${server.graphqlPath}`)
+    )
+  } catch (e) {
+    console.error(e)
+  }
+})()
