@@ -13,15 +13,10 @@ const userSchema = new mongoose.Schema(
   }
 )
 
-userSchema.pre('save', async function (next) {
+userSchema.pre('save', async function () {
   if (this.isModified('password')) {
-    try {
-      this.password = await hash(this.password, 10)
-    } catch (err) {
-      next(err)
-    }
+    this.password = await hash(this.password, 10)
   }
-  next()
 })
 
 export default mongoose.model('User', userSchema)
