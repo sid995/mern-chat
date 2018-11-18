@@ -27,7 +27,7 @@ import {
     const server = new ApolloServer({
       typeDefs,
       resolvers,
-      playground: !IN_PROD
+      playground: IN_PROD
     })
 
     server.applyMiddleware({ app })
