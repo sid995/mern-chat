@@ -12,7 +12,7 @@ import {
   DB_PORT,
   DB_NAME
 } from './config'
-;(async () => {
+  ;(async () => {
   try {
     await mongoose.connect(
       // 'mongodb://test:test123@ds055990.mlab.com:55990/local-chat',
@@ -27,7 +27,7 @@ import {
     const server = new ApolloServer({
       typeDefs,
       resolvers,
-      playground: IN_PROD
+      playground: !IN_PROD
     })
 
     server.applyMiddleware({ app })
