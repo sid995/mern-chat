@@ -25,7 +25,6 @@ export default {
       // TODO: not auth
       await Joi.validate(args, SignUp, { abortEarly: false })
       // validation
-
       return User.create(args)
     }
   }
