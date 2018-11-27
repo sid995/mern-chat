@@ -17,13 +17,14 @@ export default Joi.object().keys({
     .label('Full Name'),
   password: Joi.string()
     .regex(/^(?=\S*[a-z])(?=\S*[A-Z])(?=\S*\d)(?=\S*[^\w\s])\S{8,30}$/)
+    .required()
     .label('Password')
     .options({
       language: {
         string: {
           regex: {
             base:
-              'must have at least on lowercase, one uppecase letter, one digit and one special character'
+              'must have at least on lowercase, one uppercase letter, one digit and one special character'
           }
         }
       }
