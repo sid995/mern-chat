@@ -1,5 +1,5 @@
 export const {
-  APP_PORT = 4000,
+  APP_PORT = 8000,
   NODE_ENV = 'development',
   DB_USERNAME = 'test',
   DB_PASSWORD = 'test123',
