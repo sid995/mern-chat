@@ -13,6 +13,8 @@ export default gql`
       name: String!
       password: String!
     ): User
+    signIn(email: String!, password: String!): User
+    signOut: Boolean
   }
 
   type User {
