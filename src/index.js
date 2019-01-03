@@ -40,7 +40,7 @@ import {
       pass: REDIS_PASS
     })
 
-    APP_PORT.use(
+    app.use(
       session({
         store,
         name: SESS_NAME,
