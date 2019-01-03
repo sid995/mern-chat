@@ -16,7 +16,9 @@ export default Joi.object().keys({
     .required()
     .label('Full Name'),
   password: Joi.string()
-    .regex(/^(?=\S*[a-z])(?=\S*[A-Z])(?=\S*\d)(?=\S*[^\w\s])\S{8,30}$/)
+    .min(8)
+    .max(30)
+    .regex(/^(?=\S*[a-z])(?=\S*[A-Z])(?=\S*\d).*$/)
     .required()
     .label('Password')
     .options({
@@ -30,3 +32,5 @@ export default Joi.object().keys({
       }
     })
 })
+
+// export const signUp = Joi.object().keys({})
